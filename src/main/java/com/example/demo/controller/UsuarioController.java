@@ -51,10 +51,16 @@ public class UsuarioController {
 	public String login(UsuarioEntity usuarioEntity, Model model, HttpSession session) {
 		boolean usuarioValido = usuarioService.validarUsuario(usuarioEntity, session);
 		if(usuarioValido) {
-			return "redirect:/mantenerProducto";
+			return "redirect:/menu_productos";
 		}
 		model.addAttribute("loginInvalido", "Usuario no encontrado");
 		model.addAttribute("usuario", new UsuarioEntity());
 		return "login";
+	}
+	
+	@GetMapping("/logout")
+	public String logout(HttpSession session) {
+		session.invalidate();
+		return "redirect:/";
 	}
 }

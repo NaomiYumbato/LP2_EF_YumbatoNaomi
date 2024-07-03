@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>ListaProductos</title>
+	<!-- Estilos de Bootstrap -->
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+
+<body>
+	<div class="container">
+		<h2>Lista de Productos</h2>
+		<ul class="nav justify-content-end">
+			<li class="nav-item">
+				<a class="btn btn-outline-danger ml-2" th:href="@{/logout}" role="button">Cerrar Sesión</a>
+			</li>
+		</ul>
+		<ul class="nav nav-pills nav-fill">
+			<li class="nav-item">
+				<a th:href="@{/registrarProducto}" class="btn btn btn-outline-secondary">Agregar Producto</a>
+			</li>
+			<li class="nav-item">
+				<a th:href="@{/registrarProducto}" class="btn btn btn-outline-secondary">Generar PDF</a>
+			</li>
+		</ul>
+		<table class="table mt-4">
+			<thead>
+				<tr>
+					<th>ID</th>
+					<th>Nombre producto</th>
+					<th>Precio</th>
+					<th>Stock</th>
+					<th>Categoria</th>
+					<th>Acciones</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="prod : ${lstProd}">
+					<td th:text="${prod.idProducto}"></td>
+					<td th:text="${prod.nombre}"></td>
+					<td th:text="${prod.precio}"></td>
+					<td th:text="${prod.stock}"></td>
+					<td th:text="${prod.categoriaEntity.nombre}"></td>
+					<td>
+						<a th:href="@{/verProd/{idProducto}(idProducto=${prod.idProducto})}"
+							class="btn btn-success">Ver</a> |
+						<a th:href="@{/editarProd/{idProducto}(idProducto=${prod.idProducto})}"
+							class="btn btn btn-primary">Editar</a>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+
+	<!-- Scripts de Bootstrap y jQuery -->
+	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>

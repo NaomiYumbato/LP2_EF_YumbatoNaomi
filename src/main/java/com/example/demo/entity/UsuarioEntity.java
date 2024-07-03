@@ -15,7 +15,7 @@ public class UsuarioEntity {
 	@Column(name = "correo", nullable = false)
 	private String correo;
 
-	@Column(name = "password", nullable = false, columnDefinition = "CHAR(6)")
+	@Column(name = "password", nullable = false, columnDefinition = "VARCHAR(50)")
 	private String password;
 
 	@Column(name = "nombres", nullable = false, columnDefinition = "VARCHAR(50)")

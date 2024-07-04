@@ -19,6 +19,8 @@ public class CategoriaEntity {
 	@Column(name = "nombre", nullable = false, columnDefinition = "VARCHAR(45)")
 	private String nombre;
 
+	
+	
 	public Integer getIdCategoria() {
 		return idCategoria;
 	}
@@ -43,5 +45,12 @@ public class CategoriaEntity {
 
 	public CategoriaEntity() {
 	}
+
+	@Override
+	public String toString() {
+		return "CategoriaEntity [idCategoria=" + idCategoria + ", nombre=" + nombre + "]";
+	}
+	
+	
 
 }

@@ -1,5 +1,6 @@
 package com.example.demo.entity;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -28,7 +29,7 @@ public class ProductoEntity {
 	private Integer stock;
 
 	@ManyToOne
-	@JoinColumn(name = "id_categoria", nullable = false)
+	@JoinColumn(name = "idCategoria", nullable = false)
 	private CategoriaEntity categoriaEntity;
 
 	public Integer getIdProducto() {
@@ -83,5 +84,13 @@ public class ProductoEntity {
 
 	public ProductoEntity() {
 	}
+
+	@Override
+	public String toString() {
+		return "ProductoEntity [idProducto=" + idProducto + ", nombre=" + nombre + ", precio=" + precio + ", stock="
+				+ stock + ", categoriaEntity=" + categoriaEntity + "]";
+	}
+	
+	
 
 }
